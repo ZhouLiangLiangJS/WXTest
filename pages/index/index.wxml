@@ -1,17 +1,19 @@
 <view>
   <MyNav/>
-  <view class="nav">
-    <scroll-view scroll-x="true" >
-      <text bindtap="active" data-set='1' class="{{1===index?'active':''}}">首页</text>
-      <text bindtap="active" data-set='2' class="{{2===index?'active':''}}">动画</text>
-      <text bindtap="active" data-set='3' class="{{3===index?'active':''}}">番剧</text>
-      <text bindtap="active" data-set='4' class="{{4===index?'active':''}}">国产</text>
-      <text bindtap="active" data-set='5' class="{{5===index?'active':''}}">原创</text>
-      <text bindtap="active" data-set='6' class="{{6===index?'active':''}}">舞蹈</text>
-      <text bindtap="active" data-set='7' class="{{7===index?'active':''}}">科技</text>
-      <text bindtap="active" data-set='8' class="{{8===index?'active':''}}">数码</text>
-      <text bindtap="active" data-set='9' class="{{9===index?'active':''}}">游戏</text>
-      <text bindtap="active" data-set='0' class="{{0===index?'active':''}}">直播</text>
-    </scroll-view>
-  </view>
+    <view class="nav">
+      <scroll-view scroll-x="true" >
+        <text wx:for="{{navtitle}}" wx:key="{{index}}" bindtap="active" data-set='{{index}}' class="{{index===navtitleindex?'active':''}}">{{item.text}}
+        </text>
+      </scroll-view>
+    </view>
+  <swiper indicator-dots autoplay interval="3000" circular duration="1000">
+    <block wx:for="{{LunBoImgUrls}}" wx:key="{{index}}">
+      <swiper-item>
+        <image mode="widthFix" src="{{item.imgSrc}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view>
+    213123
+  </view>  
 </view>

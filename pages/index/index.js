@@ -4,15 +4,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-    navtitle:{},
-    index:1
+    navtitle:[],
+    navtitleindex:0,
+    LunBoImgUrls:[]
   },
 
+  //获取导航分类列表
+  getnavTitle(){
+    wx.request({
+      url:'https://mockapi.eolinker.com/7b7NMB9c75d613bc39c8f16e4e03a3d4a8f951750079dc5/navList',
+      success:(req)=>{
+        this.setData({
+          navtitle:req.data.data.navList
+        });
+      }
+    })
+  },
+
+  //设置点击高亮
   active(e){
     this.setData({
-      index:e.target.dataset.set
+      navtitleindex:e.target.dataset.set
     })
-    console.log(e.target.dataset.set,this.index);
+  },
+
+  //获取轮播图
+
+  getLunBoImgUrls(){
+    wx.request({
+      url:'https://mockapi.eolinker.com/7b7NMB9c75d613bc39c8f16e4e03a3d4a8f951750079dc5/Swiper',
+      success:req=>{
+        this.setData({
+          LunBoImgUrls:req.data.data.swiperList
+        })
+        console.log(req)
+      }
+    })
   },
 
   /**
@@ -21,7 +48,8 @@ Page({
 
   
   onLoad: function (options) {
-    console.log(options);
+    this.getnavTitle();
+    this.getLunBoImgUrls()
   },
 
   /**
