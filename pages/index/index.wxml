@@ -13,7 +13,21 @@
       </swiper-item>
     </block>
   </swiper>
-  <view>
-    213123
+  <view  class="main">
+    <navigator url="{{'../move/index?id='+item.id}}" wx:for="{{moveList}}" wx:key="{{index}}"class="main_view">
+      <image mode="scaleToFill" class="main_img" src="{{item.imgSrc}}"></image>
+      <text class="main_playCount">
+        <text class="iconfont icon-bofangcishu"></text>
+        <text >{{item.playCount}}</text>
+      </text>
+      <text class="main_commentCount">
+        <text class="iconfont icon-pinglun">
+        </text>
+        <text >{{item.commentCount}}</text>
+      </text>
+      <text class="main_desc">
+        {{item.desc}}
+      </text>
+    </navigator>
   </view>  
 </view>

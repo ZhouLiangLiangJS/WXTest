@@ -6,7 +6,8 @@ Page({
   data: {
     navtitle:[],
     navtitleindex:0,
-    LunBoImgUrls:[]
+    LunBoImgUrls:[],
+    moveList:[]
   },
 
   //获取导航分类列表
@@ -37,7 +38,19 @@ Page({
         this.setData({
           LunBoImgUrls:req.data.data.swiperList
         })
-        console.log(req)
+      }
+    })
+  },
+  //获取视频列表
+
+  getMoveList(){
+    wx.request({
+      url:'https://www.fastmock.site/mock/0cc8353a68511aad722aa387610a4ce1/bili/videosList',
+      success:req=>{
+        this.setData({
+          moveList:req.data.data.videosList
+        })
+        console.log(this.data.moveList)
       }
     })
   },
@@ -49,7 +62,8 @@ Page({
   
   onLoad: function (options) {
     this.getnavTitle();
-    this.getLunBoImgUrls()
+    this.getLunBoImgUrls();
+    this.getMoveList()
   },
 
   /**
